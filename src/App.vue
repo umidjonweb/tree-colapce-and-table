@@ -10,24 +10,12 @@
             <h2>Modal Title</h2>
             <form action="form">
                <div class="form-item">
+                  <BaseInput type="number" v-model="_formData.age" label="Age" />
+                  <BaseInput v-model="_formData.address" label="Address" />
+                  <BaseInput v-model="_formData.name" label="Name" />
                   <div>
-                     <label style="display: block; margin-bottom: 10px;;" for="age">Age</label>
-                     <input v-model="_formData.age" type="text">
-                  </div>
-                  <div>
-                     <label style="display: block; margin-bottom: 10px;;" for="name">Name</label>
-                     <input v-model="_formData.name" type="text">
-                  </div>
-                  <div>
-                     <label style="display: block; margin-bottom: 10px;;" for="address">Address</label>
-                     <input v-model="_formData.address" type="text">
-                  </div>
-                  <div>
-                     <label style="display: block; margin-bottom: 10px;;" for="css">CSS</label>
-                     <select v-model="_formData.tags" name="test[]" size="3" multiple>
-                        <option aria-rowspan="5" v-for="option in options" :key="option" :value="option">{{ option }}
-                        </option>
-                     </select>
+                     <label style="display: block; margin-bottom: 5px;;" for="css">Tags</label>
+                     <MultiSelect v-model="_formData.tags" :options="options" />
                   </div>
                </div>
                <div class="form-btn">
@@ -40,12 +28,13 @@
    </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref } from "vue";
 import TreeCollapse from "@/components/TreeCollapse.vue";
-import MultiSelect from "@/components/MultiSelect.vue";
-import Modal from "@/components/Modal.vue";
-import DynamicTable from "@/components/dinamicTable.vue";
+import MultiSelect from "@/components/Base/MultiSelect.vue";
+import Modal from "@/components/Base/Modal.vue";
+import DynamicTable from "@/components/DynamicTable.vue";
+import BaseInput from "@/components/Base/Input.vue";
 import { lists } from '@/data'
 
 const tableData = ref([
@@ -77,7 +66,6 @@ function deleteTable(ind) {
    tableData.value.splice(ind, 1)
 }
 function editTable(item) {
-   console.log(item);
    _formData.value = JSON.parse(JSON.stringify(item))
    openModal.value.open(item)
 }
