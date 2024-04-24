@@ -86,7 +86,7 @@ const showDropdown = () => {
 const toggleDropdown = () => {
    isDropdownVisible.value = !isDropdownVisible.value;
 };
- 
+
 
 </script>
 
@@ -122,6 +122,7 @@ const toggleDropdown = () => {
 
 .el-tag {
    margin-right: 4px;
+   cursor: pointer;
 }
 
 .el-tag__close {

@@ -11,12 +11,12 @@
             <form action="form">
                <div class="form-item">
                   <BaseInput type="number" v-model="_formData.age" label="Age" />
-                  <BaseInput v-model="_formData.address" label="Address" />
                   <BaseInput v-model="_formData.name" label="Name" />
                   <div>
                      <label style="display: block; margin-bottom: 5px;;" for="css">Tags</label>
                      <MultiSelect v-model="_formData.tags" :options="options" />
                   </div>
+                  <BaseInput v-model="_formData.address" label="Address" />
                </div>
                <div class="form-btn">
                   <button type="button" @click="openModal.open(false)" class="cancel">Cancel</button>
